@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orinoco - Produit</title>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <h1 class="header__title">
+            <img class="header__img" src="Assets/images/logo.png" alt="logo Orinoco">
+        </h1>
+        <nav class="header__nav nav">
+            <ul>
+                <li class="nav__item">Produits</li>
+                <li class="nav__item">Panier</li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN -->
+    <article>
+        <figure class="product-card">
+            <img class="product-card__img" src="./backend/images/vcam_1.jpg" alt="">
+            <figcaption class="product-card__info product">
+                <h3 class="product__name">Nom</h3>
+                <p class="product__description">Description</p>
+                <p class="product__options">
+                    <label for="options">Options disponibles : </label>
+                    <select name="productOptions" id="options">
+                        <option value="lorem">Lorem</option>
+                        <option value="lorem">Lorem</option>
+                    </select>
+                </p>
+                <p class="product__quantity">
+                    <label for="quantity">Quantité : </label>
+                    <input name="productQuantity" id="quantity" type="number" min="1">
+                </p>
+                <p class="product__price">Prix</p>
+                <button class="product__add-to-cart" type="button">Add to cart</button>
+            </figcaption>
+        </figure>
+    </article>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <nav class="footer__nav">
+            <ul>
+                <li><a href="index.html">Produits</a></li>
+                <li><a href="cart.html">Panier</a></li>
+                <li><a href="#">A propos</a></li>
+                <li><a href="mailto:contact@orinoco.fr">Contact</a></li>
+            </ul>
+        </nav>
+    </footer>
+    
+</body>
+</html>
