@@ -1,0 +1,86 @@
+.header {
+    display: grid;
+    grid-template-areas: 
+    "headerTitle"
+    "headerNav";
+    align-items: center;
+    justify-content: stretch;
+    background-color: $bg-color-secondary;
+
+    @include for-large-mobile {
+        grid-template-areas: "headerTitle . headerNav";
+        grid-template-columns: 200px 1fr;
+        justify-content: center;
+    }
+
+    &__title {
+        grid-area: headerTitle;
+        justify-self: center;
+        margin: map-get($margin, none) map-get($margin, medium);
+    }
+
+    &__img {
+        width: 100%;
+        max-width: 250px;
+    }
+
+    &__nav {
+        grid-area: headerNav;
+    }
+}
+
+.header-nav {
+    display: flex;
+    flex-flow: column nowrap;
+    align-content: center;
+    justify-content: space-between;
+    padding: map-get($padding, none);
+    margin: map-get($margin, none);
+    background-color: darken($bg-color-secondary, 2%);
+
+    @include for-large-mobile {
+        flex-flow: row nowrap;
+        margin: map-get($margin, small);
+        background-color: $bg-color-secondary;
+    }
+
+    &__item {
+        list-style: none;
+        text-align: center;
+        transition: all 100ms ease-in-out;
+        margin: map-get($margin, none);
+        transition: all 100ms ease-in-out;
+
+        a {
+            display: block;
+            text-decoration: none;
+            color: $color-secondary;
+            font-weight: bold;
+            padding: map-get($padding, medium) map-get($padding, large);
+        }
+
+        &:hover {
+            background-color: $color-secondary;
+
+            a {
+                color: $color-primary;
+            }
+        }
+    }
+
+    @include for-large-mobile {
+        &__item {
+            border-radius: 25px;
+            margin: map-get($margin, medium);
+            transition-duration: 100ms;
+            border: 1px solid $color-secondary;
+            background-color: darken($bg-color-secondary, 2%);
+
+            &:hover {
+                // transform: scale(1.05);
+                border-color: $color-primary;
+                background-color: $bg-color-secondary;
+            }
+        }
+    }
+}

@@ -1,0 +1,25 @@
+.product-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    padding: map-get($padding, large);
+    row-gap: map-get($padding, large);
+
+    @include for-tablet {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: map-get($padding, medium);
+
+        &__title {
+            grid-column: 1 / span 2;
+        }
+    }
+
+    @include for-large-desktop {
+        grid-template-columns: repeat(3, 1fr);
+
+        &__title {
+            grid-column: 1 / span 3;
+        }
+    }
+        
+}

@@ -1,0 +1,49 @@
+.footer {
+    background-color: $color-secondary;
+    display: flex;
+    flex-flow: column nowrap;
+
+    &__logo {
+        background-color: $bg-color-secondary;
+        margin: map-get($margin, medium);
+        border-radius: 10px;
+        border: 2px solid $color-primary;
+        align-self: center;
+        img {
+            width: 100px;
+            border-radius: 25%;
+        }
+    }
+
+
+    &__nav {
+        margin: map-get($margin, medium);
+        align-self: stretch;
+
+        ul {
+            margin: map-get($margin, none);
+            padding: map-get($padding, none);
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: center;
+            justify-content: stretch;
+        }
+
+        li {
+            list-style: none;
+            padding: map-get($padding, small);
+        }
+
+        a {
+            text-decoration: none;
+            color: $color-primary;
+        }
+
+        @include for-large-mobile {
+            ul {
+                flex-flow: row nowrap;
+                justify-content: space-around;
+            }
+        }
+    }
+}

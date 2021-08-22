@@ -1,0 +1,26 @@
+$color-primary: #e88b04;
+$color-secondary: #9b6cfc;
+
+$bg-color-primary: white;
+$bg-color-secondary: #f3e9f1;
+
+$font-primary: "Roboto", sans-serif;
+$font-weight: (
+    black: 900,
+    medium: 500,
+    light: 300,
+    thin: 100
+);
+
+$breakpoints: (
+    large-mobile: 600px,
+    tablet: 768px,
+    desktop: 992px,
+    large-desktop: 1200px
+);
+
+$padding: (none:0, xsmall: 2px, small:7px, medium:12px, large:20px);
+$margin: (none:0, xsmall: 2px, small:7px, medium:12px, large:20px);
+
+$shadow-color: darken($bg-color-primary, 15%);
+$shadow-size: .5em;

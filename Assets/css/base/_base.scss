@@ -1,0 +1,6 @@
+body {
+    margin: map-get($margin, none);
+    font-family: $font-primary;
+    font-weight: normal;
+    font-style: normal;
+}

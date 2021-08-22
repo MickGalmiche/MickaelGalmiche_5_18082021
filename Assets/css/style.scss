@@ -7,4 +7,12 @@
 // - Pages
 // - Themes
 
+@import "./utils/variables";
+@import "./utils/mixins";
 @import "./base/typography";
+@import "./base/base";
+@import "./components/productItem";
+@import "./layouts/header";
+@import "./layouts/productList";
+@import "./layouts/productCard";
+@import "./layouts/footer";

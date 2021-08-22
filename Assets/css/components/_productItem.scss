@@ -1,0 +1,55 @@
+.product-item {
+    width: 320px;
+    background-color: $bg-color-secondary;
+    border: 2px solid $bg-color-secondary;
+    border-radius: 20px;
+    margin: map-get($margin, none);
+    transition: transform 200ms ease-in-out;
+    @include box-shadow;
+    
+    &__img {
+        width: 100%;
+        height: 200px;
+        border-radius: 20px 20px 0 0;
+        object-fit: cover;
+    }
+
+    &__caption {
+        display: grid;
+        grid-template-areas: 
+        "productName productPrice"
+        "productDescription productDescription";
+        grid-template-columns: 1fr min-content;
+        margin: map-get($margin, medium);
+        align-items: center;
+    }
+
+    &:hover {
+        transform: scale(1.025);
+        cursor: pointer;
+    }
+}
+
+.product-caption {
+    h3, p {
+        margin: map-get($margin, none);
+    }
+
+    &__name {
+        grid-area: productName;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    &__description {
+        grid-area: productDescription;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    &__price {
+        grid-area: productPrice;
+    }
+}
