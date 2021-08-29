@@ -10,7 +10,6 @@
     "productInfo";
     grid-template-columns: 1fr;
     margin: map-get($margin, none);
-    @include box-shadow;
     
 
     &__img {
@@ -35,6 +34,7 @@
         border: 1px solid $bg-color-secondary;
         border-radius: 25px;
         max-width: 992px;
+        @include box-shadow;
 
         &__img {
             object-fit: cover;
