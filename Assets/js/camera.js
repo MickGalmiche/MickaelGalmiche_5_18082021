@@ -3,8 +3,8 @@ class Camera {
         jsonCamera && Object.assign(this, jsonCamera);
     }
 
-    getFormatedPrice() {
-
+    getFormatedPrice(price) {
+        return (price/100);
     }
 
     getQueryUrl() {
