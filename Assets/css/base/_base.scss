@@ -3,4 +3,7 @@ body {
     font-family: $font-primary;
     font-weight: normal;
     font-style: normal;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    height: 100vh;
 }

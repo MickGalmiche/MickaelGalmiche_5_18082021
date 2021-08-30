@@ -1,0 +1,22 @@
+.cart-table {
+    border: 2px solid $color-secondary;
+    border-collapse: collapse;
+    width: 300px;
+    margin: map-get($margin, medium);
+
+    @include for-tablet {
+        width: 500px;
+    }
+
+    &__header {
+        background-color: $bg-color-secondary;
+    }
+
+    &__footer {
+        background-color: $bg-color-secondary;
+    }
+
+    th, td {
+        padding: map-get($padding, medium);
+    }
+}

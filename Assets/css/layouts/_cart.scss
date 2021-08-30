@@ -1,0 +1,24 @@
+.main {
+    display: grid;
+    grid-template-areas: 
+    "cart"
+    "order";
+    align-items: center;
+    justify-items: center;
+    
+
+    &__cart {
+        grid-area: cart;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__order {
+        grid-area: order;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+

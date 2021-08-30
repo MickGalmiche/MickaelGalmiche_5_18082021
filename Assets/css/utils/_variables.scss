@@ -19,8 +19,8 @@ $breakpoints: (
     large-desktop: 1200px
 );
 
-$padding: (none:0, xsmall: 2px, small:7px, medium:12px, large:20px);
-$margin: (none:0, xsmall: 2px, small:7px, medium:12px, large:20px);
+$padding: (none:0, xsmall: 2px, small:7px, medium:12px, large:20px, xlarge: 40px);
+$margin: (none:0, xsmall: 2px, small:7px, medium:12px, large:20px, xlarge: 40px);
 
 $shadow-color: darken($bg-color-primary, 15%);
 $shadow-size: .5em;

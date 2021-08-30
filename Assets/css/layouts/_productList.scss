@@ -1,9 +1,16 @@
 .product-list {
+    align-content: start;
     display: grid;
     grid-template-columns: 1fr;
     justify-items: center;
+    align-items: center;
     padding: map-get($padding, large);
-    row-gap: map-get($padding, large);
+    row-gap: map-get($padding, xlarge);
+
+    &__item a {
+        text-decoration: none;
+        color: black;
+    }
 
     @include for-tablet {
         grid-template-columns: repeat(2, 1fr);

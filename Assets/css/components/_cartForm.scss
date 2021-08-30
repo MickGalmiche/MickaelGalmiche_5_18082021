@@ -1,0 +1,27 @@
+.order-form {
+    display: flex;
+    flex-flow: column wrap;
+
+    &__row {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        margin: map-get($margin, small);
+        
+        label {
+            padding: map-get($padding, small);
+        }
+        
+        input {
+            border: 2px solid $color-secondary;
+            border-radius: 5px;
+            padding: map-get($padding, small);
+
+            &:focus {
+                outline: none;
+                border-color: $color-primary;
+                @include box-shadow;
+            }
+        }
+    }
+}
