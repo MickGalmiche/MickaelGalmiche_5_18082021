@@ -8,6 +8,6 @@ fetch(urlApi)
         // Boucle listant chaque produit et créant un objet
         for(let jsonCamera of jsonListCamera) {
             let camera = new Camera(jsonCamera);
-            camera.getCameraCard();
+            camera.printCameraCard();
         }
     });

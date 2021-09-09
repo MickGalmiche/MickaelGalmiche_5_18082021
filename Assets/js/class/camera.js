@@ -16,7 +16,7 @@ class Camera {
     }
 
     // Injection du code HTML (card-list) avec les informations du produit
-    getCameraCard() {
+    printCameraCard() {
         document.querySelector('.product-list').innerHTML += `<article class="product-list__item">
                                                                     <a href="product.html?${this.getQueryUrl()}">
                                                                         <figure class="product-item">
@@ -32,7 +32,7 @@ class Camera {
     }
 
     // Injection du code HTML (card-product) avec les informations du produit
-    getCameraFigure() {
+    printCameraFigure() {
         document.querySelector('.product-main').innerHTML += `<figure class="product-card">
                                                                 <img class="product-card__img" src="${this.imageUrl}" alt="">
                                                                 <figcaption class="product-card__info product">
@@ -51,7 +51,7 @@ class Camera {
     }
 
     // Injection de l'input de choix d'une personnalisation
-    getLenses() {
+    printLenses() {
         this.lenses.forEach(lense => {
             document.querySelector('.product__options > select').innerHTML += `<option value="${lense}">${lense}</option>`            
         });

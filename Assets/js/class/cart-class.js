@@ -7,7 +7,6 @@ class Cart {
     // Création de la liste de produits à partir d'un string (stocké dans le Local Storage)
     getArrayList(stringList) {
         this.productsListArray = JSON.parse(stringList);
-        this.productsListLength = this.productsListArray.length;
     }
 
     // Initialisation de la propriété keyStorage pour l'accès au Local Storage
@@ -29,6 +28,7 @@ class Cart {
         }else{
             this.getArrayList(this.productsList);
         }
+        this.productsListLength = this.productsListArray.length;
     }
 
     // Méthode pour calculer le prix total du panier
@@ -55,23 +55,32 @@ class Cart {
         }
     }
 
+    // Evènement sur le bouton de suppression d'un article du panier
+    removeInCart(arrayId) {
+        this.productsListArray.splice(arrayId, 1);
+        localStorage.setItem(this.keyStorage, JSON.stringify(this.productsListArray));
+        window.location.reload();
+
+    }
+
     // Affichage d'une ligne de produit
-    getRowProduct(product) {
+    printRowProduct(product, productId) {
         let formatedPrice = product.price / 100;
         document.querySelector('.cart-table__product').innerHTML += `<tr>
                                                                         <td>${product.name}</td>
                                                                         <td>${product.lense}</td>
                                                                         <td>${formatedPrice}€</td>
                                                                         <td>
-                                                                            <button class="clearProduct">Suppr</button>
+                                                                            <button class="clearProduct" id="${productId}" onclick="cart.removeInCart(${productId})">Suppr</button>
                                                                         </td>
                                                                     </tr>`
     };
+    //removeProduct(${productId})
     
     // Affichage en cas de panier vide
-    getEmptyRowProduct() {
+    printEmptyRowProduct() {
         document.querySelector('.cart-table__product').innerHTML += `<tr>
-                                                                        <td colspan="2">Aucun produit sélectionné</td>
+                                                                        <td colspan="4">Aucun produit sélectionné</td>
                                                                     </tr>`
     };
 }

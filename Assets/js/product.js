@@ -11,8 +11,8 @@ fetch(urlApi)
 
         // Création de l'objet du produit et application des méthodes (affichage, ajout au panier)
         let camera = new Camera(jsonCamera);
-        camera.getCameraFigure();
-        camera.getLenses();
+        camera.printCameraFigure();
+        camera.printLenses();
 
         // Intégration du choix d'objectif dans l'objet Camera
         document
