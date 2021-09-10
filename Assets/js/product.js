@@ -27,7 +27,7 @@ fetch(urlApi)
             .addEventListener("click", () => {
                 let cart = new Cart();
                 cart.setKeyStorage('listProducts');
-                cart.getProductsList();
+                cart.getList();
                 cart.addToCart(camera);
             })
     });

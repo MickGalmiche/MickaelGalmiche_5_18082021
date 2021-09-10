@@ -1,11 +1,11 @@
 let cart = new Cart();
 cart.setKeyStorage('listProducts');
-cart.getProductsList();
+cart.getList();
 let productsData = [];
 let productId = 0;
 
-if (cart.productsListLength >= 1) {
-    cart.productsListArray.forEach(arrayItem => {
+if (cart.listLength >= 1) {
+    cart.listArray.forEach(arrayItem => {
         let product = JSON.parse(arrayItem);
         cart.printRowProduct(product, productId);
         productId++;
@@ -54,17 +54,33 @@ document
         fetch(url, fetchOptions)
             .then(response => response.json())
             .then(response => {
-                let orderId = response.orderId;
-                let responseData = JSON.stringify(response);
-                localStorage.setItem(`order_${orderId}`, responseData);
 
+                // Stockage de la commande dans une key ORDER
+                let order = new Order();
+                order.setKeyStorage('order');
+                order.getList();
+                order.registerOrder(response);
+
+                console.log(localStorage.getItem('order'));
+                
+                // Alternative de stockage de commande
+                // localStorage.setItem(`order_${orderId}`, responseData);
+
+                // Alternative de stockage des infos de commande dans l'URL
+                /* let queryBlob = new Blob([responseData], {type : 'application/json'});
+                let queryBlobUrl = URL.createObjectURL(queryBlob);
+                console.log(queryBlobUrl); */
+
+                // Création de l'url+ID de commande
+                let orderId = response.orderId;
                 let queryUrl = new URLSearchParams();
                 queryUrl.append('orderId', orderId);
                 queryUrl.toString();
 
+                // Suppresion du panier à l'envoi des infos à l'API + Reload de la page
                 cart.clearCart();
-
                 window.location.href=`order.html?${queryUrl}`;
+
                 //localStorage.removeItem(`order_${orderId}`);
             });
     });

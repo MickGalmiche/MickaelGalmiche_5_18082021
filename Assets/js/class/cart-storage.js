@@ -1,34 +1,8 @@
-class Cart {
+class Cart extends Storage {
 
     constructor() {
+        super();
         this.totalPrice = 0;
-    }
-
-    // Création de la liste de produits à partir d'un string (stocké dans le Local Storage)
-    getArrayList(stringList) {
-        this.productsListArray = JSON.parse(stringList);
-    }
-
-    // Initialisation de la propriété keyStorage pour l'accès au Local Storage
-    setKeyStorage(key) {
-        this.keyStorage = key;
-    }
-
-    // Création de la key dans le Local Storage
-    createKeyStorage() {
-        localStorage.setItem(this.keyStorage, '')
-    }
-
-    // Méthode initialisant le contenu du Local Storage avec la liste de produits
-    getProductsList() {
-        this.productsList = localStorage.getItem(this.keyStorage);
-        if(!this.productsList) {
-            this.createKeyStorage(this.keyStorage);
-            this.productsListArray = [];
-        }else{
-            this.getArrayList(this.productsList);
-        }
-        this.productsListLength = this.productsListArray.length;
     }
 
     // Méthode pour calculer le prix total du panier
@@ -40,15 +14,15 @@ class Cart {
     // Enregistrement des informations dans le localStorage (string d'objets)
     addToCart(camera) {
         const stringProductObject = JSON.stringify(camera);
-        this.productsListArray.push(stringProductObject);
-        localStorage.setItem(this.keyStorage, JSON.stringify(this.productsListArray));
+        this.listArray.push(stringProductObject);
+        localStorage.setItem(this.keyStorage, JSON.stringify(this.listArray));
     }
 
     // Evènement sur le bouton de suppression du panier
     clearCart() {
-        if (this.productsListLength && this.productsListLength >= 1) {
-            this.productsListArray.splice(0, this.productsListLength);
-            localStorage.setItem(this.keyStorage, JSON.stringify(this.productsListArray));
+        if (this.listLength && this.listLength >= 1) {
+            this.listArray.splice(0, this.listLength);
+            localStorage.setItem(this.keyStorage, JSON.stringify(this.listArray));
             window.location.reload();
         }else{
             alert('Votre panier est déjà vide !');
@@ -57,8 +31,8 @@ class Cart {
 
     // Evènement sur le bouton de suppression d'un article du panier
     removeInCart(arrayId) {
-        this.productsListArray.splice(arrayId, 1);
-        localStorage.setItem(this.keyStorage, JSON.stringify(this.productsListArray));
+        this.listArray.splice(arrayId, 1);
+        localStorage.setItem(this.keyStorage, JSON.stringify(this.listArray));
         window.location.reload();
 
     }
