@@ -1,0 +1,12 @@
+.delivery {
+    grid-area: delivery;
+    background-color: $bg-color-secondary;
+    padding: map-get($padding, medium) map-get($padding, xlarge);
+    border-radius: 10px;
+    border: 1px solid $color-primary;
+    @include box-shadow;
+
+    &__infos {
+        list-style: none;
+    }
+}

@@ -1,0 +1,24 @@
+.order {
+    grid-area: order;
+    background-color: $bg-color-secondary;
+    padding: map-get($padding, medium) map-get($padding, xlarge);
+    border-radius: 10px;
+    border: 1px solid $color-primary;
+    display: grid;
+    @include box-shadow;
+}
+
+.order-table {
+    border: 2px solid $color-secondary;
+    border-collapse: collapse;
+    width: 300px;
+    margin: map-get($margin, medium);
+    background-color: $bg-color-primary;
+    text-align: center;
+    justify-self: center;
+
+    &__header {
+        background-color: $color-secondary;
+        color: white;
+    }
+}

@@ -135,6 +135,42 @@ body {
   padding: 12px;
 }
 
+.order {
+  grid-area: order;
+  background-color: #f3e9f1;
+  padding: 12px 40px;
+  border-radius: 10px;
+  border: 1px solid #e88b04;
+  display: grid;
+  box-shadow: 0 0.5em 0.5em 0 #d9d9d9;
+}
+
+.order-table {
+  border: 2px solid #9b6cfc;
+  border-collapse: collapse;
+  width: 300px;
+  margin: 12px;
+  background-color: white;
+  text-align: center;
+  justify-self: center;
+}
+.order-table__header {
+  background-color: #9b6cfc;
+  color: white;
+}
+
+.delivery {
+  grid-area: delivery;
+  background-color: #f3e9f1;
+  padding: 12px 40px;
+  border-radius: 10px;
+  border: 1px solid #e88b04;
+  box-shadow: 0 0.5em 0.5em 0 #d9d9d9;
+}
+.delivery__infos {
+  list-style: none;
+}
+
 .header {
   display: grid;
   grid-template-areas: "headerTitle" "headerNav";
@@ -347,6 +383,23 @@ body {
   align-items: center;
 }
 
+.main-order {
+  display: grid;
+  grid-template-areas: "msg" "order" "delivery";
+  align-content: center;
+  justify-items: center;
+  gap: 20px;
+}
+@media screen and (min-width: 992px) {
+  .main-order {
+    grid-template-areas: "msg msg" "order delivery";
+  }
+}
+
+.order-msg {
+  grid-area: msg;
+}
+
 .footer {
   background-color: #9b6cfc;
   display: flex;
@@ -381,7 +434,7 @@ body {
 }
 .footer__nav a {
   text-decoration: none;
-  color: #e88b04;
+  color: white;
 }
 @media screen and (min-width: 600px) {
   .footer__nav ul {
