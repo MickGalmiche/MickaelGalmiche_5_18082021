@@ -57,23 +57,23 @@
             <form class="order__form order-form" id="order-form" action="order.html" method="POST">
                 <div class="order-form__row">
                     <label for="firstName">Nom</label>
-                    <input type="text" id="firstname" name="firstName">
+                    <input type="text" id="firstname" name="firstName" pattern="^[a-zA-Z \-']+$" maxlength="20" required>
                 </div>
                 <div class="order-form__row">
                     <label for="lastName">Prénom</label>
-                    <input type="text" id="lastname" name="lastName">
+                    <input type="text" id="lastname" name="lastName" pattern="^[a-zA-Z \-']+$" maxlength="20" required>
                 </div>
                 <div class="order-form__row">
                     <label for="address">Adresse</label>
-                    <input type="text" id="address" name="address">
+                    <input type="text" id="address" name="address" pattern="^[\w]+$" maxlength="50" required>
                 </div>
                 <div class="order-form__row">
                     <label for="city">Ville</label>
-                    <input type="text" id="city" name="city">
+                    <input type="text" id="city" name="city" pattern="^[a-zA-Z \-']+$" maxlength="20" required>
                 </div>
                 <div class="order-form__row">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email">
+                    <input type="email" id="email" name="email" maxlength="20" required>
                 </div>
                 <input type="submit" value="Commander">
             </form>

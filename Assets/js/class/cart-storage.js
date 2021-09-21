@@ -57,4 +57,16 @@ class Cart extends Storage {
                                                                         <td colspan="4">Aucun produit sélectionné</td>
                                                                     </tr>`
     };
+
+    // Vérification de la validité des éléments du formulaire
+    checkContactForm(form) {
+        let valid = true;
+        for(let input of form) {
+            valid &= input.reportValidity();
+            if (!valid) {
+                break;
+            }
+        }
+        return valid;
+    }
 }

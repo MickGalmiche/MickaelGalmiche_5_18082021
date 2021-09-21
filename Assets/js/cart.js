@@ -29,6 +29,22 @@ document
         cart.clearCart();
     });
 
+
+/* // test validity
+console.log(document.getElementById('order-form').checkValidity());
+let testForm = document
+                .getElementById("order-form")
+                .addEventListener('change', function(event) {
+                    let validity = event.target.checkValidity();
+                    console.log(validity);
+                })
+
+if (document.getElementById('order-form').checkValidity() && testForm) {
+    console.log('Formulaire valide');
+} */
+
+
+
 document
     .getElementById("order-form")
     .addEventListener("submit", async function(event) {
@@ -36,53 +52,59 @@ document
 
         const url = "http://localhost:3000/api/cameras/order";
         const form = event.target;
-        const formData = new FormData(form);
-        let contactData = Object.fromEntries(formData.entries());
-        
-        const fetchOptions = {
-            method: form.method,
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-            },
-            body: JSON.stringify({
-                contact: contactData,
-                products: productsData
-            }),
-        };
 
-        fetch(url, fetchOptions)
-            .then(response => response.json())
-            .then(response => {
+        if (cart.listLength == 0) {
+            alert('Votre panier est vide');
+        } else if (cart.listLength >= 1 && checkContactForm(document.querySelectorAll(".order-form input"))) {
 
-                // Stockage de la commande dans une key ORDER
-                let order = new Order();
-                order.setKeyStorage('order');
-                order.getList();
-                order.registerOrder(response);
+            const formData = new FormData(form);
+            let contactData = Object.fromEntries(formData.entries());
+            
+            const fetchOptions = {
+                method: form.method,
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                },
+                body: JSON.stringify({
+                    contact: contactData,
+                    products: productsData
+                }),
+            };
 
-                console.log(localStorage.getItem('order'));
-                
-                // Alternative de stockage de commande
-                // localStorage.setItem(`order_${orderId}`, responseData);
+            fetch(url, fetchOptions)
+                .then(response => response.json())
+                .then(response => {
 
-                // Alternative de stockage des infos de commande dans l'URL
-                /* let queryBlob = new Blob([responseData], {type : 'application/json'});
-                let queryBlobUrl = URL.createObjectURL(queryBlob);
-                console.log(queryBlobUrl); */
+                    // Stockage de la commande dans une key ORDER
+                    let order = new Order();
+                    order.setKeyStorage('order');
+                    order.getList();
+                    order.registerOrder(response);
 
-                // Création de l'url+ID de commande
-                let orderId = response.orderId;
-                let queryUrl = new URLSearchParams();
-                queryUrl.append('orderId', orderId);
-                queryUrl.toString();
+                    console.log(localStorage.getItem('order'));
 
-                // Suppresion du panier à l'envoi des infos à l'API + Reload de la page
-                cart.clearCart();
-                window.location.href=`order.html?${queryUrl}`;
+                    // Alternative de stockage de commande
+                    // localStorage.setItem(`order_${orderId}`, responseData);
 
-                //localStorage.removeItem(`order_${orderId}`);
-            });
+                    // Alternative de stockage des infos de commande dans l'URL
+                    /* let queryBlob = new Blob([responseData], {type : 'application/json'});
+                    let queryBlobUrl = URL.createObjectURL(queryBlob);
+                    console.log(queryBlobUrl); */
+
+                    // Création de l'url+ID de commande
+                    let orderId = response.orderId;
+                    let queryUrl = new URLSearchParams();
+                    queryUrl.append('orderId', orderId);
+                    queryUrl.toString();
+
+                    // Suppresion du panier à l'envoi des infos à l'API + Reload de la page
+                    cart.clearCart();
+                    window.location.href=`order.html?${queryUrl}`;
+
+                    //localStorage.removeItem(`order_${orderId}`);
+                });
+        }
     });
 
 

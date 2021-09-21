@@ -6,6 +6,7 @@ const urlApi = `http://localhost:3000/api/cameras/${idProduct}`;
 
 // Requête API pour obtenir les information d'un produit
 fetch(urlApi)
+    .then(responseApi)
     .then( data => data.json())
     .then(jsonCamera => {
 
@@ -30,4 +31,20 @@ fetch(urlApi)
                 cart.getList();
                 cart.addToCart(camera);
             })
-    });
+    })
+    .catch(error => {
+        document.getElementById('product-main').innerHTML = '<p>Aucun article disponible !</p>';
+        console.log(`${error.status} : ${error.statusText} - Mauvaise requête API`);
+    })
+
+function responseApi(response) {
+    if (!response.ok) {
+        // throw Error(response.statusText);
+        return Promise.reject({
+            status: response.status,
+            statusText: response.statusText
+        })
+    } else {
+        return response;
+    }
+}
