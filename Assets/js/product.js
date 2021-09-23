@@ -10,7 +10,7 @@ fetch(urlApi)
     .then( data => data.json())
     .then(jsonCamera => {
 
-        // Création de l'objet du produit et application des méthodes (affichage, ajout au panier)
+        // Création de l'objet du produit et application des méthodes (affichage via injection des valeurs dans le template)
         let camera = new Camera(jsonCamera);
         camera.printCameraFigure();
         camera.printLenses();
@@ -30,6 +30,7 @@ fetch(urlApi)
                 cart.setKeyStorage('listProducts');
                 cart.getList();
                 cart.addToCart(camera);
+                alert('Votre article a bien été ajouté au panier !')
             })
     })
     .catch(error => {

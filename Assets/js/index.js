@@ -6,10 +6,15 @@ fetch(urlApi)
     .then(data => data.json())
     .then(jsonListCamera => {
 
+        // Récupération du template de la carte Produit
+        let template = document.querySelector('#product-list-item');
+        let host = document.querySelector('#product-list');
+        
         // Boucle listant chaque produit et créant un objet
+        // Injection des valeurs de l'objet dans le template
         for(let jsonCamera of jsonListCamera) {
             let camera = new Camera(jsonCamera);
-            camera.printCameraCard();
+            camera.printCameraCard(template, host);
         }
     })
     .catch(error => {

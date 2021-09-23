@@ -15,39 +15,31 @@ class Camera {
         return queryUrl.toString();
     }
 
-    // Injection du code HTML (card-list) avec les informations du produit
-    printCameraCard() {
-        document.querySelector('.product-list').innerHTML += `<article class="product-list__item">
-                                                                    <a href="product.html?${this.getQueryUrl()}">
-                                                                        <figure class="product-item">
-                                                                            <img class="product-item__img" src="${this.imageUrl}" alt="">
-                                                                            <figcaption class="product-item__caption product-caption">
-                                                                                <h3 class="product-caption__name">${this.name}</h3>
-                                                                                <p class="product-caption__description">${this.description}</p>
-                                                                                <p class="product-caption__price">${this.getFormatedPrice()}€</p>
-                                                                            </figcaption>
-                                                                        </figure>
-                                                                    </a>
-                                                                </article>`
+    // Injection des informations du produit dans le template HTML de la page d'accueil
+    printCameraCard(template, host) {
+
+        let clone = document.importNode(template.content, true);
+        clone.querySelector('a').setAttribute("href", `product.html?${this.getQueryUrl()}`);
+        clone.querySelector('.product-item__img').setAttribute("src",this.imageUrl);
+        clone.querySelector('.product-caption__name').textContent = this.name;
+        clone.querySelector('.product-caption__description').textContent = this.description;
+        clone.querySelector('.product-caption__price').textContent = `${this.getFormatedPrice()}€`;
+        host.appendChild(clone);
+
     }
 
-    // Injection du code HTML (card-product) avec les informations du produit
+    // Injection des informations du produit dans le template HTML de la page produit
     printCameraFigure() {
-        document.querySelector('.product-main').innerHTML += `<figure class="product-card">
-                                                                <img class="product-card__img" src="${this.imageUrl}" alt="">
-                                                                <figcaption class="product-card__info product">
-                                                                    <h3 class="product__name">${this.name}</h3>
-                                                                    <p class="product__description">${this.description}</p>
-                                                                    <p class="product__options">
-                                                                        <label for="options">Choisir un objectif : </label>
-                                                                        <select name="productOptions" id="options">
-                                                                            <option value"">---</option>                                                                          
-                                                                        </select>
-                                                                    </p>
-                                                                    <p class="product__price">Prix : ${this.getFormatedPrice()}€</p>
-                                                                    <button id="addToCart" class="product__add-to-cart" type="button">Add to cart</button>
-                                                                </figcaption>
-                                                            </figure>`
+
+        let template = document.querySelector('#product-template');
+        let host = document.querySelector('#product-main');
+        let clone = document.importNode(template.content, true);
+        clone.querySelector('.product-card__img').setAttribute("src", this.imageUrl);
+        clone.querySelector('.product__name').textContent = this.name;
+        clone.querySelector('.product__description').textContent = this.description;
+        clone.querySelector('.product__price').textContent = `Prix ${this.getFormatedPrice()}€`;
+        host.appendChild(clone);
+
     }
 
     // Injection de l'input de choix d'une personnalisation
