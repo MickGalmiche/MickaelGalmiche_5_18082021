@@ -1,3 +1,5 @@
+let cart = new Cart('listProducts');
+
 const urlApi = 'http://localhost:3000/api/cameras'
 
 // Requête API pour la liste de produits
@@ -33,29 +35,3 @@ function responseApi(response) {
         return response;
     }
 }
-
-/* function responseApi(response) {
-    let contentType = response.headers.get('content-type');
-    if (contentType.includes('application/json')) {
-        return responseJsonApi(response);
-    } else if (contentType.includes('text/html')) {
-        return responseTextApi(response);
-    } else {
-        throw new Error(`Désolé, content-type ${contentType} non supporté`);
-    }
-}
-
-function responseJsonApi(response) {
-    return response.json()
-        .then(json => {
-            if (response.ok) {
-                return json;
-            } else {
-                return Promise.reject(Object.assign({}, json, {
-                    status: response.status,
-                    statusText: response.statusText,
-                    err: text
-                }))
-            }
-        })
-} */

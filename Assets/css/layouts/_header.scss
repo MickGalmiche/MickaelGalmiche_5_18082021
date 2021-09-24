@@ -84,3 +84,12 @@
         }
     }
 }
+
+.badge-cart {
+    border: 2px solid $color-primary;
+    border-radius: 25px;
+    padding: map-get($padding, small) map-get($padding, medium );
+    margin-left: map-get($margin, small);
+    background-color: white;
+    color: $color-primary;
+}

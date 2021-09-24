@@ -1,5 +1,11 @@
 class Order extends Storage {
 
+    constructor(key) {
+        super();
+        super.setKeyStorage(key);
+        super.getList();
+    }
+
     // Evènement sur le bouton de commande
     // Enregistrement des informations dans le localStorage (string d'objets)
     registerOrder(order) {
@@ -8,6 +14,7 @@ class Order extends Storage {
         localStorage.setItem(this.keyStorage, JSON.stringify(this.listArray));
     };
 
+    // Affichage d'une ligne de produit dans la page de commande
     printRowOrder(product) {
         document.querySelector('.order-table__body').innerHTML += `<tr>
                                                                         <td>${product.name}</td>
@@ -15,6 +22,7 @@ class Order extends Storage {
                                                                     </tr>`
     };
 
+    // Affichage des coordonnées dans la page de commande
     printDelivery(contact) {
         document.querySelector('.delivery__infos').innerHTML += `<li>${contact.firstName} ${contact.lastName}</li>
                                                                 <li>${contact.address}</li>

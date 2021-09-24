@@ -1,7 +1,9 @@
 class Cart extends Storage {
 
-    constructor() {
+    constructor(key) {
         super();
+        super.setKeyStorage(key);
+        super.getList();
         this.totalPrice = 0;
     }
 
@@ -49,7 +51,6 @@ class Cart extends Storage {
                                                                         </td>
                                                                     </tr>`
     };
-    //removeProduct(${productId})
     
     // Affichage en cas de panier vide
     printEmptyRowProduct() {
@@ -69,4 +70,5 @@ class Cart extends Storage {
         }
         return valid;
     }
+
 }

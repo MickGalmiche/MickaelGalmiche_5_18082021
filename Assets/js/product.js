@@ -3,6 +3,7 @@ let url = new URL(document.location.href);
 let params = new URLSearchParams(url.search);
 let idProduct = params.get('id');
 const urlApi = `http://localhost:3000/api/cameras/${idProduct}`;
+let cart = new Cart('listProducts');
 
 // Requête API pour obtenir les information d'un produit
 fetch(urlApi)
@@ -26,11 +27,9 @@ fetch(urlApi)
         document
             .getElementById("addToCart")
             .addEventListener("click", () => {
-                let cart = new Cart();
-                cart.setKeyStorage('listProducts');
-                cart.getList();
                 cart.addToCart(camera);
-                alert('Votre article a bien été ajouté au panier !')
+                alert('Votre article a bien été ajouté au panier !');
+                window.location.reload();
             })
     })
     .catch(error => {

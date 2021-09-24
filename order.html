@@ -19,7 +19,7 @@
                 <li class="header-nav__item">
                     <a href="index.html">Accueil</a>
                 </li>
-                <li class="header-nav__item">
+                <li id="header-nav-cart" class="header-nav__item">
                     <a href="cart.html">Panier</a>
                 </li>
             </ul>
@@ -30,35 +30,40 @@
     <main class="main-order">
 
         <section class="order-msg">
-            <h2 class="order-msg__title">Merci pour votre commande !</h2>
+            <h2 class="order-msg__title"></h2>
         </section>
 
-        <article class="order">
-            <h3>Commande n°<span id="order-number"></span></h3>
-            <table class="order-table">
-                <thead class="order-table__header">
-                    <tr>
-                        <th colspan="2">Récapitulatif</th>
-                    </tr>
-                </thead>
-                <tbody class="order-table__body">
-                    
-                </tbody>
-                <!-- <tfoot class="order-table__footer">
-                    <tr>
-                        <th>Total</th>
-                        <th></th>
-                    </tr>
-                </tfoot> -->
-            </table>
-        </article>
+        <template id="order-valid">
+            <article class="order">
+                <h3>Commande n°<span id="order-number"></span></h3>
+                <table class="order-table">
+                    <thead class="order-table__header">
+                        <tr>
+                            <th colspan="2">Récapitulatif</th>
+                        </tr>
+                    </thead>
+                    <tbody class="order-table__body">
 
-        <article class="delivery">
-            <h3 class="delivery__title">Livraison</h3>
-            <ul class="delivery__infos">
+                    </tbody>
+                </table>
+            </article>
 
-            </ul>
-        </article>
+            <article class="delivery">
+                <h3 class="delivery__title">Livraison</h3>
+                <ul class="delivery__infos">
+
+                </ul>
+            </article>
+        </template>
+
+        <template id="order-invalid">
+            <article class="order-list">
+                <h3 class="order-list__title">Liste des commandes précédentes</h3>
+                <ul class="order-list__items">
+
+                </ul>
+            </article>
+        </template>
 
     </main>
 

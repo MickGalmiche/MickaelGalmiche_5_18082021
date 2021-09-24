@@ -248,6 +248,15 @@ body {
   }
 }
 
+.badge-cart {
+  border: 2px solid #e88b04;
+  border-radius: 25px;
+  padding: 7px 12px;
+  margin-left: 7px;
+  background-color: white;
+  color: #e88b04;
+}
+
 .product-list {
   align-content: start;
   display: grid;
