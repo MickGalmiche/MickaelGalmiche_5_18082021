@@ -33,6 +33,7 @@
             <h2 class="order-msg__title"></h2>
         </section>
 
+        <!-- TEMPLATE DE COMMANDE -->
         <template id="order-valid">
             <article class="order">
                 <h3>Commande n°<span id="order-number"></span></h3>
@@ -43,7 +44,7 @@
                         </tr>
                     </thead>
                     <tbody class="order-table__body">
-
+                        <!-- INJECTION DES LIGNES DE PRODUITS -->
                     </tbody>
                 </table>
             </article>
@@ -51,16 +52,17 @@
             <article class="delivery">
                 <h3 class="delivery__title">Livraison</h3>
                 <ul class="delivery__infos">
-
+                    <!-- INJECTION DES ELEMENTS DE LA LISTE DE COORDONNÉES -->
                 </ul>
             </article>
         </template>
 
+        <!-- TEMPLATE ALTERNATIF SI AUCUNE COMMANDE -->
         <template id="order-invalid">
             <article class="order-list">
                 <h3 class="order-list__title">Liste des commandes précédentes</h3>
                 <ul class="order-list__items">
-
+                    <!-- INJECTION DES ELEMENTS DE LA LISTE D'ANCIENNES COMMANDES -->
                 </ul>
             </article>
         </template>

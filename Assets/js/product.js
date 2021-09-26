@@ -16,20 +16,24 @@ fetch(urlApi)
         camera.printCameraFigure();
         camera.printLenses();
 
-        // Intégration du choix d'objectif dans l'objet Camera
-        document
-            .querySelector('select[name="productOptions"]')
-            .addEventListener("change", (event) => {
-                camera.setLense(event.target.value);
-            })
-
         // Event d'ajout au panier grâce à la classe Cart
+        // Vérification du choix d'une personnalisation
         document
             .getElementById("addToCart")
             .addEventListener("click", () => {
-                cart.addToCart(camera);
-                alert('Votre article a bien été ajouté au panier !');
-                window.location.reload();
+
+                let selectedLense = camera.verifySelectLense();
+                if (selectedLense) {
+                    camera.setLense(selectedLense);
+                    cart.addToCart(camera)
+                    if (confirm('Votre article a bien été ajouté au panier !\nSouhaitez-vous confirmer votre commande ?')) {
+                        window.location.href='cart.html';
+                    } else {
+                        window.location.reload();
+                    }
+                } else {
+                    alert("Veuillez choisir un objectif avant d'ajouter un article dans le panier")
+                }
             })
     })
     .catch(error => {

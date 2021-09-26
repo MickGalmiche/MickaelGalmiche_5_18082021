@@ -28,6 +28,8 @@
 
     <!-- MAIN -->
     <main class="main">
+
+        <!-- CARD RÉCAPITULATIVE DES PRODUITS DU PANIER -->
         <article class="main__cart cart">
             <h2 class="cart__title">Votre panier</h2>
             <table class="cart__table cart-table">
@@ -40,7 +42,7 @@
                     </tr>
                 </thead>
                 <tbody class="cart-table__product">
-                    
+                    <!-- INJECTION DES LIGNES DE PRODUITS -->
                 </tbody>
                 <tfoot class="cart-table__footer">
                     <tr>
@@ -52,6 +54,7 @@
             <button id="clearCart" type="button">Clear cart</button>
         </article>
 
+        <!-- FORMULAIRE DE COORDONNÉES -->
         <section class="main__order order">
             <h2 class="order__title">Vos coordonnées</h2>
             <form class="order__form order-form" id="order-form" action="order.html" method="POST">
@@ -65,7 +68,7 @@
                 </div>
                 <div class="order-form__row">
                     <label for="address">Adresse</label>
-                    <input type="text" id="address" name="address" pattern="^[\w]+$" maxlength="50" required>
+                    <input type="text" id="address" name="address" pattern="^[\w\s]+$" maxlength="50" required>
                 </div>
                 <div class="order-form__row">
                     <label for="city">Ville</label>

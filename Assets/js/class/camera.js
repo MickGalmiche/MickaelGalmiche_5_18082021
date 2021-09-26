@@ -45,20 +45,30 @@ class Camera {
     // Injection de l'input de choix d'une personnalisation
     printLenses() {
         this.lenses.forEach(lense => {
-            document.querySelector('.product__options > select').innerHTML += `<option value="${lense}">${lense}</option>`            
+            // document.querySelector('.product__options > select').innerHTML += `<option value="${lense}">${lense}</option>`
+            
+            document.querySelector('.product__options').innerHTML += `<div class="product-options__item">
+                                                                        <input type="radio" name="selectedLense" value="${lense}" id="${lense}"></input>
+                                                                        <label for="${lense}">${lense}</label>
+                                                                    </div>`
         });
+
+    }
+
+    verifySelectLense() {
+        let inputs = document.querySelectorAll('input[name="selectedLense"]');
+        let value;
+        for (let input of inputs) {
+            if (input.checked) {
+                value = input.value;
+                break;
+            }
+        }
+        return value;
     }
 
     // Création de la propriété Lense grâce à un évènement sur l'input
     setLense(event) {
         this.lense = event;
     }
-
-    /* setChosenLense(camera) { 
-        document
-            .querySelector('select[name="productOptions"]')
-            .addEventListener("change", function(event) {
-                camera.lense = event.target.value;
-            })
-    } */
 }

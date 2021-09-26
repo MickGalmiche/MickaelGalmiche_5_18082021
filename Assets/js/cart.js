@@ -22,7 +22,9 @@ document.querySelector('.totalPriceProducts').textContent = `${cart.totalPrice}‚
 document
     .getElementById("clearCart")
     .addEventListener("click", () => {
-        cart.clearCart();
+        if (confirm('Souhaitez-vous vider votre panier ?')) {
+            cart.clearCart();
+        }
     });
 
 // Event de soumission de la commande avec envoie au banckend
@@ -79,14 +81,6 @@ document
                     let order = new Order('order');
                     order.registerOrder(response);
 
-                    // Alternative de stockage de commande
-                    // localStorage.setItem(`order_${orderId}`, responseData);
-
-                    // Alternative de stockage des infos de commande dans l'URL
-                    /* let queryBlob = new Blob([responseData], {type : 'application/json'});
-                    let queryBlobUrl = URL.createObjectURL(queryBlob);
-                    console.log(queryBlobUrl); */
-
                     // Cr√©ation de l'url+ID de commande
                     let orderId = response.orderId;
                     let queryUrl = new URLSearchParams();
@@ -97,7 +91,6 @@ document
                     cart.clearCart();
                     window.location.href=`order.html?${queryUrl}`;
 
-                    //localStorage.removeItem(`order_${orderId}`);
                 });
         }
     });

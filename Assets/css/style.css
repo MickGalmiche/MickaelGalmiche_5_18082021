@@ -373,6 +373,10 @@ body {
   transform: scale(1.05);
 }
 
+.product-options__title {
+  margin: 0;
+}
+
 .main {
   display: grid;
   grid-template-areas: "cart" "order";
